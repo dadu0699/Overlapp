@@ -1,0 +1,49 @@
+<!--Header-->
+<div class="row">
+  <div class="col-md-12">
+    <header id="header">
+      <div class="slider">
+        <div class="carousel slide" id="carousel-example-generic" data-ride="carousel">
+          <!-- Wrapper for slides-->
+          <div class="carousel-inner" role="listbox">
+            <div class="item active">
+              <img src="//placehold.it/1200x400/20BFA9/ffffff&amp;text=Overlapp">
+            </div>
+          </div>
+          <!-- Controls-->
+          <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev"></a>
+          <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next"></a>
+        </div>
+      </div>
+      <!-- slider-->
+      <nav class="navbar navbarHeader navbar-default">
+        <!-- Brand and toggle get grouped for better mobile display-->
+        <div class="navbar-header">
+          <button class="navbar-toggle collapsed hidden-xs" type="button" data-toggle="collapse" data-target="#mainNav">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand navbar-brandHeader">
+            <img class="img-responsive" src="assets/images/guy-3.png">
+          </a>
+          <span class="site-name">
+            <b>{{ user.nombre }} {{ user.apellido }}</b>
+          </span>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling-->
+        <div class="collapse navbar-collapse" id="mainNav">
+          <ul class="nav main-menu navbar-nav">
+            <li [routerLinkActive]="['active']">
+              <a [routerLink]="['/dashboard/profile']">
+                <i class="glyphicon glyphicon-home"></i> Biografía
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+  </div>
+</div>
+<!--END Header-->

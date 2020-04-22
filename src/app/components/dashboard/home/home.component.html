@@ -1,0 +1,116 @@
+<div class="container page-content">
+  <div class="row">
+    <div class="row">
+      <!-- left links-->
+      <div class="col-md-3">
+        <div class="profile-nav">
+          <div class="widget">
+            <div class="widget-body">
+              <div class="user-heading round">
+                <a [routerLink]="['/dashboard/profile']">
+                  <img src="assets/images/guy-3.png">
+                </a>
+                <h1>{{ user.nombre }} {{ user.apellido }}</h1>
+                <p>{{ user.correo }}</p>
+              </div>
+              <ul class="nav nav-pills nav-stacked">
+                <li [routerLinkActive]="['active']">
+                  <a [routerLink]="['/dashboard/home']">
+                    <i class="glyphicon glyphicon-user"></i> Noticias
+                  </a>
+                </li>
+                <li [routerLinkActive]="['active']">
+                  <a [routerLink]="['/dashboard/messages']">
+                    <i class="glyphicon glyphicon-envelope"></i> Mensajes
+                  </a>
+                </li>
+                <li [routerLinkActive]="['active']">
+                  <a [routerLink]="['/dashboard/group']">
+                    <i class="glyphicon glyphicon-th"></i> Grupos
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- end left links-->
+      <!-- center posts-->
+      <div class="col-md-8">
+        <div class="row">
+          <!-- left posts-->
+          <div class="col-md-12">
+            <div class="row">
+              <div class="col-md-12">
+
+                <!-- post state form-->
+                <div class="box profile-info n-border-top">
+                  <form #formPublication="ngForm" (ngSubmit)="addPublication()">
+                    <textarea class="form-control input-lg p-text-area" rows="2" placeholder="¿Qué tienes en mente hoy?" name="contenido" #contenido="ngModel"
+                      [(ngModel)]="publication.contenido" required></textarea>
+                    <div class="box-footer box-form">
+                      <button class="btn pull-right" type="submit" [disabled]="!formPublication.form.valid">Post</button>
+                      <ul class="nav nav-pills">
+                        <li>
+                          <a>
+                            <i class="glyphicon glyphicon-camera"></i>
+                          </a>
+                        </li>
+                        <li>
+                          <a>
+                            <i class="glyphicon glyphicon-film"></i>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </form>
+                </div>
+                <!-- end post state form-->
+
+                <!-- posts-->
+                <div class="box box-widget" *ngFor="let publication of publications">
+                  <div class="box-header with-border">
+                    <div class="user-block">
+                      <img class="img-circle" src="assets/images/guy-3.png">
+                      <span class="username">
+                        <a>{{ publication.nombre }} {{ publication.apellido }}</a> >
+                        <a [routerLink]="['/dashboard/group', publication.idCanal]"> {{ publication.nombreCanal }}</a>
+                      </span>
+                      <span class="description">{{ publication.fecha | timeAgo }}</span>
+                    </div>
+                  </div>
+
+                  <div class="box-body" style="display: block;">
+                    <p>{{ publication.contenido }}</p>
+                    <button class="btn btn-default btn-xs" type="button" disabled>
+                      <i class="glyphicon glyphicon-share-alt"></i>
+                      <span class="hidden-xs">Compartir</span>
+                    </button>
+                    <button class="btn btn-default btn-xs" type="button" disabled>
+                      <i class="glyphicon glyphicon-thumbs-up"></i>
+                      <span class="hidden-xs">Me gusta</span>
+                    </button>
+                    <span class="pull-right text-muted">127 me gusta - 1 comentario</span>
+                  </div>
+
+                  <div class="box-footer" style="display: block;">
+                    <form>
+                      <img class="img-responsive img-circle img-sm" src="assets/images/guy-3.png">
+                      <div class="img-push">
+                        <input class="form-control input-sm" type="text" placeholder="Presiona enter para publicar el comentario">
+                      </div>
+                    </form>
+                  </div>
+                </div>
+                <!-- end posts-->
+
+              </div>
+            </div>
+          </div>
+          <!-- end left posts-->
+        </div>
+      </div>
+      <!-- end  center posts-->
+    </div>
+  </div>
+</div>
